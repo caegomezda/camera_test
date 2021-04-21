@@ -7,14 +7,37 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+	<ion-card  class="ion-padding">
+		<h2 align=center>{{'Foto'}}</h2>
+			<div align=center>
+		  <ion-button class="ion-padding" (click)="takePictureFront()" slot="center">
+			<ion-icon name="camera-outline"></ion-icon>
+		  </ion-button>
+		</div>
+    
+    <div class="image">
+      <ion-card>
+        <img *ngIf="image" [src]="image" alt="image">
+      </ion-card>
+    </div>
+
+    <div align=center>
+        <ion-button class="ion-padding" (click)="uploadImages()" slot="center">
+          <ion-icon name="arrow-up-outline"></ion-icon>
+		    </ion-button>
+    </div>
+	</ion-card>
+
+  <ion-card>
+      <ion-item lines="full">
+        <ion-label>Lista de imagenes</ion-label>
+      </ion-item>
+      <ion-list *ngIf="isImage">
+        <ion-item *ngFor="let image of listaImage">
+          <ion-label>{{image}}</ion-label>
+        </ion-item>
+      </ion-list>
+  </ion-card>
+
 </ion-content>
